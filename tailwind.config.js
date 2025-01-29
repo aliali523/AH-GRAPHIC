@@ -1,8 +1,15 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
+  input: '/src/main.tsx',  // نقطة الدخول (entry point)
+  output: {
+    dir: 'dist',  // المكان الذي ستُوضع فيه الملفات المجمعة
+    format: 'esm',  // نوع التنسيق
   },
-  plugins: [],
-};
+  build: {
+    rollupOptions: {
+      external: ['/src/main.tsx'],  // إضافة الملف إلى قائمة الوحدات الخارجية
+    }
+  }
+}
+
